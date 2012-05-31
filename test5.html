@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>w i k i h i f i - Wikipedia Research Engine</title>
+  <link rel="stylesheet" type="text/css" href="css/reuters.css" media="screen" />
+  <!-- 
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js"></script>
+   -->
+  		<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.10.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+  		<script type="text/javascript" src="js/jquery-ui-1.8.10.custom.min.js"></script>
+  
+  <!--  jquery slider includes -->
+  	<style type="text/css">
+			/*demo page css*/
+			body{ font: 62.5% "Trebuchet MS", sans-serif;}
+			.demoHeaders { margin-top: 2em; }
+			#dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+			#dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+			ul#icons {margin: 0; padding: 0;}
+			ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+			ul#icons span.ui-icon {float: left; margin: 0 4px;}
+			#eq {margin-left: 30px;}
+			#eq_header span {font-size: 0.9em; margin: 3px;font-weight: bold;}
+			#eq span {height:120px; float:left; margin-right:42px;}
+			#eq_values {clear:both;}
+			#eq_values span {clear:both; font-size: 2em;  margin: 25px;}
+			#weightDisplay span {font-size: 10px; margin-right: 40px;}
+			.ui-slider-vertical .ui-state-default {background: white url(http://www.veryicon.com/icon/png/System/Crystal%20Clear%20Actions/Up%20Arrow.png) no-repeat scroll 50% 50%;}
+ 
+		</style>	
+		
+		<!--  JScroller includes -->
+		<script type="text/javascript" src="js/jquery.jcarousel.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/tango/skin.css" />
+<script type="text/javascript">
+/* 	jQuery(document).ready(function() {
+		jQuery('#mycarousel').jcarousel({
+			// Configuration goes here
+			wrap : 'circular',
+			visible: 5,
+			scroll: 5
+
+		});
+		jQuery('#mycarousel2').jcarousel({
+			// Configuration goes here
+			wrap : 'circular',
+			visible: 5,
+			scroll: 5
+
+		});
+	}); */
+</script>
+		
+		
+  <!--  Ajax solr includes  -->
+  <script type="text/javascript" src="js/asjs/reuters.js"></script>
+  <script type="text/javascript" src="js/asjs/core/Core.js"></script>
+
+  <script type="text/javascript" src="js/asjs/core/AbstractManager.js"></script>
+  <script type="text/javascript" src="js/asjs/managers/Manager.jquery.js"></script>
+  <script type="text/javascript" src="js/asjs/core/Parameter.js"></script>
+  <script type="text/javascript" src="js/asjs/core/ParameterStore.js"></script>
+  <script type="text/javascript" src="js/asjs/core/AbstractWidget.js"></script>
+  <script type="text/javascript" src="js/asjs/widgets/ResultWidget.js"></script>
+
+  <script type="text/javascript" src="js/asjs/helpers/jquery/ajaxsolr.theme.js"></script>
+  <script type="text/javascript" src="js/asjs/my.theme.js"></script>
+  <script type="text/javascript" src="js/asjs/helpers/jquery/jquery.livequery.js"></script>
+  <script type="text/javascript" src="js/asjs/widgets/jquery/PagerWidget.js"></script>
+  <script type="text/javascript" src="js/asjs/core/AbstractFacetWidget.js"></script>
+  <script type="text/javascript" src="js/asjs/widgets/TagcloudWidget.js"></script> 
+
+  <script type="text/javascript" src="js/asjs/widgets/CurrentSearchWidget.js"></script>
+  <link rel="stylesheet" type="text/css" href="js/asjs/ext/jquery.autocomplete.css" media="screen" />
+  <script type="text/javascript" src="js/asjs/ext/jquery.autocomplete.js"></script>
+  <script type="text/javascript" src="js/asjs/widgets/AutocompleteWidget.js"></script>
+  <script type="text/javascript" src="js/asjs/helpers/ajaxsolr.support.js"></script>
+  <script type="text/javascript" src="js/asjs/helpers/ajaxsolr.theme.js"></script>
+
+ <!--  <script type="text/javascript" src="js/asjs/widgets/CountryCodeWidget.js"></script> -->
+    <script type="text/javascript" src="js/asjs/widgets/CatWidget.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="js/asjs/ext/smoothness/jquery-ui.css" media="screen" />
+  <link rel="stylesheet" type="text/css" href="js/asjs/ext/smoothness/u.theme.css" media="screen" />
+  <script type="text/javascript" src="js/asjs/widgets/CalendarWidget.js"></script>
+  <!-- End Ajax Solr includes -->
+  
+  <style type="text/css">
+  <!-- changes slider image -->
+  .ui-slider-vertical .ui-state-default {background: white url(images/sliderbutton_black.png) no-repeat scroll 50% 50%;}
+  </style>
+</head>
+<body>
+<script type="text/javascript">
+function createQstr() {
+	var term = $('#query').val();
+	//var termArr = ["pagetext:Retirement","pagetext:Inflation","pagetext:Money","pagetext:Insurance","pagetext:FinancialPlanner","pagetext:Fund","pagetext:Investment"];
+	var termArr = Manager.store.get('CategoryList');
+	if(termArr != null || termArr != undefined) {
+		termArr = ["Retirement","Inflation","Money","Insurance","FinancialPlanner","Fund","Investment"];
+	}
+	var qTerm = '';
+	 ctr=1;
+	$.each(termArr, function() {	      
+	      if(ctr>1)
+	    	  qTerm += ' OR ';
+	      var boostVal = $('#q'+ctr+'_val').text();
+	      if(boostVal == null)
+	    	  boostVal = 0;
+	      qTerm += ('pagetext:'+this+'^'+ boostVal );
+	      ctr++;
+		}
+	);
+	//alert(term);
+	
+    if($('#query').val().length !=0)
+		return term + ' AND ' + qTerm;
+    else
+    	return qTerm;
+}
+function resubmit(){
+	  Manager.store.addByValue('q', createQstr());
+	  Manager.doRequest();
+}
+$(function(){
+/* 	// Slider
+	$('#slider').slider({
+		range: true,
+		values: [17, 67]
+	}); */
+	
+	$('#mycarousel').jcarousel({
+		// Configuration goes here
+		wrap : 'circular',
+		visible: 7,
+		scroll: 3
+
+	});
+	$('#mycarousel2').jcarousel({
+		// Configuration goes here
+		wrap : 'circular',
+		visible: 7,
+		scroll: 3
+
+	});
+
+	
+	// setup graphic EQ
+	$( "#eq > span" ).each(function() {
+		// read initial values from markup and remove that
+		var value = parseInt( $( this ).text(), 10 );
+		$( this ).empty().slider({
+			value: value,
+			range: "min",
+			min: 0,
+			max: 10,
+			animate: true,
+			orientation: "vertical" ,
+			stop:  function(event, ui) {
+				 Manager.store.addByValue('q', createQstr());
+				  Manager.doRequest();
+			},
+			slide: function( event, ui ) {
+				var id = $(this).attr('id');
+				$('#'+id+'_val').text(ui.value);
+			} //http://jqueryui.com/demos/slider/#steps
+		});
+	});
+});
+
+
+
+</script>
+  <div id="wrap"> 
+    <div id="header">
+
+      <h2 style="font-family: Verdana; font-weight: bold; font-size: 1.5em;">w i k i h i f i</h2>
+	  <h2 style="font-family: Verdana; font-weight: bold; font-size:1.1em;">Wikipedia ReSearch Engine</h2>
+      
+    </div>
+	<div id="toprow" style="clear:both;width: 100%; text-align: center; margin: 20px auto;">
+	    <div id="search">
+        <input type="text" id="query" name="query" style="width: 30%"/>
+        <input type="submit" value="go" id="submitButton" name="queryB" onclick="resubmit();" style="width: 50px;"/>
+      </div>
+	</div>
+   
+
+    <div class="left">
+    <!--  turning off temp 
+      <h2>Current Selection</h2>
+      <ul id="selection"></ul>
+     -->
+      <h2>Search</h2>
+      <span id="search_help">(press ESC to close suggestions)</span>
+  
+     
+      <ul id="mycarousel" class="jcarousel-skin-tango">
+	<!-- 	<li id="c1">Retirement Planning</li>
+		<li id="c2">Money</li>
+		<li id="c3"> Inflation</li>
+		<li id="c5">Insurance</li>
+		<li id="c6">Financial Planner</li>
+		<li id="c7">Fund</li>
+		<li id="c8">Investment</li>
+		<li id="c9">Two Some other Text here</li>
+		<li id="c10">Three Some other Text here</li>
+		<li id="c11">Three Some other Text here</li> -->
+		<li id="c1"></li>
+		<li id="c2"></li>
+		<li id="c3"></li>
+		<li id="c5"></li>
+		<li id="c6"></li>
+		<li id="c7"></li>
+		<li id="c8"></li>
+		<li id="c9"></li>
+		<li id="c10"></li>
+		<li id="c11"></li>
+			</ul>
+		 <div id="eq_header"> 
+		</div>		
+
+
+		
+		<div id="eq">
+			<span id="q1">3.3</span>
+			<span id="q2">7.7</span>
+			<span id="q3">5.5</span>
+			<span id="q4">3.3</span>
+			<span id="q5">4.0</span>
+			<span id="q6">4.5</span>
+			<span id="q7">7.0</span>
+			
+		</div>
+		<div id="weightDisplay" style="clear:left;">
+			<span id="q1_val">3.3</span>
+			<span id="q2_val">7.7</span>
+			<span id="q3_val">5.5</span>
+			<span id="q4_val">3.3</span>
+			<span id="q5_val">4.0</span>
+			<span id="q6_val">4.5</span>
+			<span id="q7_val">7.0</span>
+			</div>
+    
+         <div id="catDisplay"></div>
+    <!--       <h2>Top Topics</h2>
+
+      <div class="tagcloud" id="topics"></div>
+
+      <h2>Top Organisations</h2>
+      <div class="tagcloud" id="organisations"></div>
+
+      <h2>Top Exchanges</h2>
+      <div class="tagcloud" id="exchanges"></div>
+
+      <h2>By Country</h2>
+
+      <div id="countries"></div>
+      <div id="preview"></div>
+
+      <h2>By Date</h2>
+      <div id="calendar"></div>
+ -->
+
+      <div class="clear"></div>
+    </div>  <!--  end left -->
+     <div class="right">
+      <div id="result">
+        <div id="navigation">
+          <ul id="pager"></ul>
+
+          <div id="pager-header"></div>
+        </div>
+        <div id="docs"></div>
+      </div>
+    </div>
+    <div class="clear"></div>
+
+  </div>  
+</body>
+</html>

@@ -1,0 +1,56 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="js/jquery.jcarousel.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/tango/skin.css" />
+<script type="text/javascript">
+	jQuery(document).ready(function() {
+		jQuery('#mycarousel').jcarousel({
+			// Configuration goes here
+			wrap : 'circular',
+			visible: 5,
+			scroll: 5
+
+		});
+		jQuery('#mycarousel2').jcarousel({
+			// Configuration goes here
+			wrap : 'circular',
+			visible: 5,
+			scroll: 5
+
+		});
+	});
+</script>
+
+</head>
+<body>
+	<ul id="mycarousel" class="jcarousel-skin-tango">
+		<li id="c1">One Some Text here</li>
+		<li id="c2">Two Some other Text here</li>
+		<li id="c3">Three Some other Text here</li>
+		<li id="c4">One Some Text here</li>
+		<li id="c5">Two Some other Text here</li>
+		<li id="c6">Three Some other Text here</li>
+		<li id="c7">One Some Text here</li>
+		<li id="c8">Two Some other Text here</li>
+		<li id="c9">Three Some other Text here</li>
+		<li id="c10">Three Some other Text here</li>
+	</ul>
+<br></br>
+<ul id="mycarousel2" class="jcarousel-skin-tango">
+		<li id="c1">One Some Text here</li>
+		<li id="c2">Two Some other Text here</li>
+		<li id="c3">Three Some other Text here</li>
+		<li id="c4">One Some Text here</li>
+		<li id="c5">Two Some other Text here</li>
+		<li id="c6">Three Some other Text here</li>
+		<li id="c7">One Some Text here</li>
+		<li id="c8">Two Some other Text here</li>
+		<li id="c9">Three Some other Text here</li>
+		<li id="c10">Three Some other Text here</li>
+	</ul>
+
+</body>
+</html>

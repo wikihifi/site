@@ -1,0 +1,196 @@
+
+body {
+	font: 62.5% "Trebuchet MS", sans-serif;
+	text-color: white;
+	background-color: #3b3b3b; /* black;  #eee; */
+}
+
+.demoHeaders {
+	margin-top: 2em;
+}
+
+#dialog_link {
+	padding: .4em 1em .4em 20px;
+	text-decoration: none;
+	position: relative;
+}
+
+#dialog_link span.ui-icon {
+	margin: 0 5px 0 0;
+	position: absolute;
+	left: .2em;
+	top: 50%;
+	margin-top: -8px;
+}
+
+ul#icons {
+	margin: 0;
+	padding: 0;
+}
+
+ul#icons li {
+	margin: 2px;
+	position: relative;
+	padding: 4px 0;
+	cursor: pointer;
+	float: left;
+	list-style: none;
+}
+
+ul#icons span.ui-icon {
+	float: left;
+	margin: 0 4px;
+}
+
+#eq {
+	margin-left: 30px;
+}
+
+#eq_header span {
+	font-size: 0.9em;
+	margin: 3px;
+	font-weight: bold;
+}
+
+#eq span {
+	height: 100px;
+	float: left;
+	margin-right: 67px;
+	width: 5px;
+	
+}
+
+#cat_eq {
+	margin-left: 30px;
+}
+
+#cat_eq_header span {
+	font-size: 0.9em;
+	margin: 3px;
+	font-weight: bold;
+}
+
+#cat_eq span {
+	height: 100px;
+	float: left;
+	margin-right: 67px; 	
+	width: 5px;
+}
+
+#t_eqdivs span {
+	height: 50px;
+	margin-right: 45px;	
+	width: 4px;
+	float: right;
+}
+
+#t_maineq {
+	margin-top: 0px;
+	border: none;
+	float: left;
+	clear: right;
+	width: 20%;		
+	height: 80px;
+}
+#t_text {
+  clear: both;
+}
+#t_text span {
+	height: 20px;
+	width: 45px;
+	margin-top: 5px;
+	margin-left: 12px;
+	float: right;
+}
+
+#eq_values {
+	clear: both;
+}
+
+#eq_values span {
+	clear: both;
+	font-size: 2em;
+	margin: 65px;
+}
+
+#weightDisplay span {
+	font-size: 10px;
+	margin-right: 45px;
+	margin-left: 15px;
+}
+
+.ui-slider-vertical .ui-state-default {
+		background: white url(../images/thumb-bar.gif) no-repeat scroll 50% 50%;
+		width: 42px;
+		height: 22px;		
+		margin-left: -17px;		
+}
+
+ #t_eqdivs .ui-slider-vertical  .ui-state-default {
+		background: white url(../images/thumb-bar-small.gif) no-repeat scroll 100% 100%;
+		width: 28px;
+		height: 16px;		
+		margin-left: -10px;		
+}
+.ui-widget-content {
+   border: 1px solid #bbb;
+}
+.result-row {
+	/* background: #F8B850; */
+	/* border-color:  #6998f0; */
+	border-color: #ccc;
+	border-style: outset ;
+	border-width: 1px; 
+	font-size: 14px; 
+	margin-bottom: 10px;
+}
+
+.wiki-content {
+	display: none;
+}
+.jcarousel-skin-tango {
+   color: #F8B850;
+}
+.jcarousal-container-horizontal {
+   width: 90%;
+   }
+ #pager, #pager-header {
+/*	 color: rgb(130,199,255) ; our blue */ 
+	 color: #F8B850;
+	 font-size: 1.4em;
+}
+.tooltip {
+ color: rgb(130,199,255) ;   
+  width: 100px;
+  text-align:left;
+}
+
+#catHeader .tooltip {
+ color: rgb(130,199,255) ;   
+  width: 400px;
+  text-align:left;
+  z-index:1000; 
+  font-size: 0.8em; 
+}
+
+#refineButton {
+ /* color:  #F8B850; */
+ color: rgb(130,199,255) ;    
+ background: url(../images/empty_button_177_25.png) no-repeat ; 
+display: block;
+ background-color: #3b3b3b; 
+ border:none; 
+ width: 177px;
+ height: 27px;
+ padding-top:2px;
+}
+
+.currSearch_term {
+
+float: left; 
+width:46%;
+ font-size: 1.3em; color: #F8B850; border: 1px solid;
+}
+.currSearch_Cat {
+float: left; width:45%; font-size: 1.3em; color: #F8B850; border: 1px solid;
+}

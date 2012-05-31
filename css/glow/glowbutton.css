@@ -1,0 +1,66 @@
+.glow-button
+{
+    vertical-align:text-bottom;        	
+    background:url(../../images/gloss.png) left center scroll repeat-x;
+    border-style:solid;
+    border-width:1px 0pt;            
+}
+.glow-button .inner
+{
+    border-style:solid;
+    border-width:0pt 1px;
+    margin:0pt -1px;
+}
+.glow-button .inner INPUT
+{
+    background-color:transparent;        	
+    margin:0px;
+    border-style:solid;
+    border-width:1px;
+    cursor:pointer;
+    overflow:visible;
+}
+
+.blue, .blue .inner
+{
+	border-color:#004D89;
+}
+.blue INPUT
+{
+    border-color:#599ACD;
+    color:#fff;
+    padding:4px 10px;
+}
+
+.dark, .dark .inner
+{
+	border-color:#0A0A0A;
+}
+.dark INPUT
+{
+    border-color:#444041;
+    color:#fff;
+    padding:4px 10px;
+} 
+
+.green, .green .inner
+{
+	border-color:#79B837;
+}
+.green INPUT
+{
+    border-color:#9DCE5C;
+    color:#000;
+    padding:4px 10px;
+} 
+
+.purple, .purple .inner
+{
+	border-color:#9C0063;
+}
+.purple INPUT
+{
+    border-color:#D693BD;
+    color:#fff;
+    padding:4px 10px;
+}
